@@ -7,22 +7,6 @@ assignees: tjp206, linseycurrie, Strd79, CraigA27
 
 ---
 
----
-name: Job Story Template
-about: Add your job story here.
-title: "[Add one liner title]"
-
----
-
----
-name: Job story
-about: A task that is required usually as part of a Feature
-title: "[one-liner]"
-labels: task
-assignees: ''
-
----
-
 ## Description
 When [users work/life context] 
 I want to [motivation] 
