@@ -2,6 +2,7 @@ package models;
 
 public class WeightedExercise extends Exercise {
 
+    private Long id;
     private int sets;
     private int reps;
     private double weight;
@@ -14,6 +15,14 @@ public class WeightedExercise extends Exercise {
     }
 
     public WeightedExercise(){}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public int getSets() {
         return sets;
