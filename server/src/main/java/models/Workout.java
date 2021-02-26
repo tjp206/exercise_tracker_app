@@ -2,7 +2,6 @@ package models;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Workout {
 
@@ -10,7 +9,7 @@ public class Workout {
     private LocalDate current_Date;
     private LocalDate start_time;
     private LocalDate end_time;
-    private ArrayList<String> exercises;
+    private ArrayList<Exercise> exercises;
 
     public Workout(LocalDate current_Date, LocalDate start_time, LocalDate end_time) {
         this.current_Date = current_Date;
@@ -54,7 +53,7 @@ public class Workout {
         return exercises;
     }
 
-    public void addExercises(String exercise) {
+    public void addExercises(Exercise exercise) {
         this.exercises.add(exercise);
     }
 }
