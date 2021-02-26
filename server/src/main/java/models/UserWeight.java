@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class UserWeight {
 
+    Long id;
     private double weight;
     private LocalDate date;
 
@@ -13,6 +14,14 @@ public class UserWeight {
     }
 
     public UserWeight() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public double getWeight() {
         return weight;
