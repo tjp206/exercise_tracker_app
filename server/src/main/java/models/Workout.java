@@ -1,17 +1,18 @@
 package models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Workout {
 
     private Long id;
-    private Date current_Date;
-    private Date start_time;
-    private Date end_time;
+    private LocalDate current_Date;
+    private LocalDate start_time;
+    private LocalDate end_time;
     private ArrayList<String> exercises;
 
-    public Workout(Date current_Date, Date start_time, Date end_time) {
+    public Workout(LocalDate current_Date, LocalDate start_time, LocalDate end_time) {
         this.current_Date = current_Date;
         this.start_time = start_time;
         this.end_time = end_time;
@@ -25,31 +26,31 @@ public class Workout {
         this.id = id;
     }
 
-    public Date getCurrent_Date() {
+    public LocalDate getCurrent_Date() {
         return current_Date;
     }
 
-    public void setCurrent_Date(Date current_Date) {
+    public void setCurrent_Date(LocalDate current_Date) {
         this.current_Date = current_Date;
     }
 
-    public Date getStart_time() {
+    public LocalDate getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(Date start_time) {
+    public void setStart_time(LocalDate start_time) {
         this.start_time = start_time;
     }
 
-    public Date getEnd_time() {
+    public LocalDate getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(Date end_time) {
+    public void setEnd_time(LocalDate end_time) {
         this.end_time = end_time;
     }
 
-    public ArrayList<String> getExercises() {
+    public ArrayList<Exercise> getExercises() {
         return exercises;
     }
 
