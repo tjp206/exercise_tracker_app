@@ -2,6 +2,7 @@ package models;
 
 public abstract class Exercise {
 
+    private Long id;
     private String exerciseType;
     private String exerciseTargetArea;
 
@@ -11,6 +12,14 @@ public abstract class Exercise {
     }
 
     public Exercise(){}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getExerciseType() {
         return exerciseType;
