@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class UserWeight {
 
-    Long id;
+    private Long id;
     private double weight;
     private LocalDate date;
 
