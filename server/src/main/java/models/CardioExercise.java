@@ -2,6 +2,7 @@ package models;
 
 public class CardioExercise extends Exercise {
 
+    private Long id;
     private int minutes;
     private int distance;
 
@@ -12,6 +13,16 @@ public class CardioExercise extends Exercise {
     }
 
     public CardioExercise(){}
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public int getMinutes() {
         return minutes;
