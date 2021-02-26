@@ -12,7 +12,7 @@ public class User {
     private String sex;
     private String email;
     private Integer height;
-    private Double bmi;
+    private double bmi;
     private List<UserWeight> userWeight;
 
     public User(String firstName, String lastName, LocalDate dob, String sex, String email, Integer height) {
@@ -25,6 +25,14 @@ public class User {
     }
 
     public User() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -74,11 +82,11 @@ public class User {
         this.height = height;
     }
 
-    public Double getBmi() {
+    public double getBmi() {
         return bmi;
     }
 
-    public void setBmi(Double bmi) {
+    public void setBmi(double bmi) {
         this.bmi = bmi;
     }
 }
