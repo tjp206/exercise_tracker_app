@@ -1,4 +1,4 @@
-package models;
+package com.example.exercise_tracker.exercise_tracker_app.models;
 
 public class CardioExercise extends Exercise {
 
