@@ -22,6 +22,8 @@ public class Workout {
         this.endTime = endTime;
     }
 
+    public Workout(){}
+
     public Long getId() {
         return id;
     }
