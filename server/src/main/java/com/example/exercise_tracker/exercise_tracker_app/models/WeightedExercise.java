@@ -1,5 +1,12 @@
 package com.example.exercise_tracker.exercise_tracker_app.models;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="weighted_exercises")
 public class WeightedExercise extends Exercise {
 
     private Long id;
@@ -7,11 +14,16 @@ public class WeightedExercise extends Exercise {
     private int reps;
     private double weight;
 
-    public WeightedExercise(String exerciseType, String exerciseTargetArea, int sets, int reps, double weight) {
+    @ManyToOne
+    @JoinColumn(name="workout_id", nullable = false)
+    private Workout workout;
+
+    public WeightedExercise(String exerciseType, String exerciseTargetArea, int sets, int reps, double weight, Workout workout) {
         super(exerciseType, exerciseTargetArea);
         this.sets = sets;
         this.reps = reps;
         this.weight = weight;
+        this.workout = workout;
     }
 
     public WeightedExercise(){}
@@ -46,6 +58,14 @@ public class WeightedExercise extends Exercise {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public Workout getWorkout() {
+        return workout;
+    }
+
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
     }
 }
 

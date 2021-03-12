@@ -1,15 +1,27 @@
 package com.example.exercise_tracker.exercise_tracker_app.models;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "cardio_exercises")
 public class CardioExercise extends Exercise {
 
     private Long id;
     private int minutes;
     private int distance;
 
-    public CardioExercise(String exerciseType, String exerciseTargetArea, int minutes, int distance) {
+    @ManyToOne
+    @JoinColumn(name="workout_id", nullable = false)
+    private Workout workout;
+
+    public CardioExercise(String exerciseType, String exerciseTargetArea, int minutes, int distance, Workout workout) {
         super(exerciseType, exerciseTargetArea);
         this.minutes = minutes;
         this.distance = distance;
+        this.workout= workout;
     }
 
     public CardioExercise(){}
@@ -36,5 +48,13 @@ public class CardioExercise extends Exercise {
 
     public void setDistance(int distance) {
         this.distance = distance;
+    }
+
+    public Workout getWorkout() {
+        return workout;
+    }
+
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
     }
 }

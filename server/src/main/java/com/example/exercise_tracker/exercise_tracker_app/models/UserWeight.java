@@ -1,12 +1,23 @@
 package com.example.exercise_tracker.exercise_tracker_app.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "user_weights")
 public class UserWeight {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double weight;
     private LocalDate date;
+
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable = false)
+    private User user;
 
     public UserWeight(double weight, LocalDate date) {
         this.weight = weight;

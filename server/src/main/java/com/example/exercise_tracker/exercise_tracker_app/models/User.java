@@ -1,10 +1,14 @@
 package com.example.exercise_tracker.exercise_tracker_app.models;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
+@Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
@@ -13,7 +17,6 @@ public class User {
     private String email;
     private Integer height;
     private double bmi;
-    private List<UserWeight> userWeight;
 
     public User(String firstName, String lastName, LocalDate dob, String sex, String email, Integer height) {
         this.firstName = firstName;
