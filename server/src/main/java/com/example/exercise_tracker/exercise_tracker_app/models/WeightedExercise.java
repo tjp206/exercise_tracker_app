@@ -1,17 +1,31 @@
 package com.example.exercise_tracker.exercise_tracker_app.models;
 
-public class WeightedExercise extends Exercise {
+import javax.persistence.*;
 
+@Entity
+@Table(name="weighted_exercises")
+public class WeightedExercise {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String exerciseType;
+    private String exerciseTargetArea;
     private int sets;
     private int reps;
     private double weight;
 
-    public WeightedExercise(String exerciseType, String exerciseTargetArea, int sets, int reps, double weight) {
-        super(exerciseType, exerciseTargetArea);
+    @ManyToOne
+    @JoinColumn(name="workout_id", nullable = false)
+    private Workout workout;
+
+    public WeightedExercise(String exerciseType, String exerciseTargetArea, int sets, int reps, double weight, Workout workout) {
+        this.exerciseType = exerciseType;
+        this.exerciseTargetArea = exerciseTargetArea;
         this.sets = sets;
         this.reps = reps;
         this.weight = weight;
+        this.workout = workout;
     }
 
     public WeightedExercise(){}
@@ -46,6 +60,30 @@ public class WeightedExercise extends Exercise {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public Workout getWorkout() {
+        return workout;
+    }
+
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
+    }
+
+    public String getExerciseType() {
+        return exerciseType;
+    }
+
+    public void setExerciseType(String exerciseType) {
+        this.exerciseType = exerciseType;
+    }
+
+    public String getExerciseTargetArea() {
+        return exerciseTargetArea;
+    }
+
+    public void setExerciseTargetArea(String exerciseTargetArea) {
+        this.exerciseTargetArea = exerciseTargetArea;
     }
 }
 

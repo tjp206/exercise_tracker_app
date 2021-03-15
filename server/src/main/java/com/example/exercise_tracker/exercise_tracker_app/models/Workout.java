@@ -1,5 +1,7 @@
 package com.example.exercise_tracker.exercise_tracker_app.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -9,17 +11,21 @@ import java.time.LocalTime;
 public class Workout {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate workoutDate;
     private LocalTime startTime;
     private LocalTime endTime;
 
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable = false)
+    private User user;
 
-    public Workout(LocalDate workoutDate, LocalTime startTime, LocalTime endTime) {
+    public Workout(LocalDate workoutDate, LocalTime startTime, LocalTime endTime, User user) {
         this.workoutDate = workoutDate;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.user = user;
     }
 
     public Workout(){}
@@ -56,4 +62,11 @@ public class Workout {
         this.endTime = endTime;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
