@@ -2,6 +2,7 @@ package com.example.exercise_tracker.exercise_tracker_app.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "users")

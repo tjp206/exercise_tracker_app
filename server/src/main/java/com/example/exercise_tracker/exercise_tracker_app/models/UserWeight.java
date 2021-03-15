@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class UserWeight {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private double weight;
     private LocalDate date;
@@ -19,9 +19,10 @@ public class UserWeight {
     @JoinColumn(name="user_id", nullable = false)
     private User user;
 
-    public UserWeight(double weight, LocalDate date) {
+    public UserWeight(double weight, LocalDate date, User user) {
         this.weight = weight;
         this.date = date;
+        this.user = user;
     }
 
     public UserWeight() {}
@@ -49,6 +50,5 @@ public class UserWeight {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-
 }
 
