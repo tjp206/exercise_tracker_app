@@ -1,8 +1,6 @@
 package com.example.exercise_tracker.exercise_tracker_app.components;
 
-import com.example.exercise_tracker.exercise_tracker_app.models.User;
-import com.example.exercise_tracker.exercise_tracker_app.models.UserWeight;
-import com.example.exercise_tracker.exercise_tracker_app.models.Workout;
+import com.example.exercise_tracker.exercise_tracker_app.models.*;
 import com.example.exercise_tracker.exercise_tracker_app.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -51,5 +49,11 @@ public class DataLoader implements ApplicationRunner {
 
         Workout workout2 = new Workout(LocalDate.now(), LocalTime.now(), LocalTime.now(), Stacey);
         workoutRepository.save(workout2);
+
+        WeightedExercise we1 = new WeightedExercise("Squats", "Legs", 4, 15, 65.50, workout1);
+        weightedExerciseRepository.save(we1);
+
+        CardioExercise ce1 = new CardioExercise("Speed Bike",  60, 10, workout2);
+        cardioExerciseRepository.save(ce1);
     }
 }

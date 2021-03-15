@@ -4,11 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cardio_exercises")
-public class CardioExercise extends Exercise {
+public class CardioExercise {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String exerciseDescription;
     private int minutes;
     private int distance;
 
@@ -16,8 +17,8 @@ public class CardioExercise extends Exercise {
     @JoinColumn(name="workout_id", nullable = false)
     private Workout workout;
 
-    public CardioExercise(String exerciseType, String exerciseTargetArea, int minutes, int distance, Workout workout) {
-        super(exerciseType, exerciseTargetArea);
+    public CardioExercise(String exerciseDescription, int minutes, int distance, Workout workout) {
+        this.exerciseDescription = exerciseDescription;
         this.minutes = minutes;
         this.distance = distance;
         this.workout= workout;
@@ -55,5 +56,13 @@ public class CardioExercise extends Exercise {
 
     public void setWorkout(Workout workout) {
         this.workout = workout;
+    }
+
+    public String getExerciseDescription() {
+        return exerciseDescription;
+    }
+
+    public void setExerciseDescription(String exerciseDescription) {
+        this.exerciseDescription = exerciseDescription;
     }
 }

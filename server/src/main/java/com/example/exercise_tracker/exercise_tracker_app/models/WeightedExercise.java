@@ -4,11 +4,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="weighted_exercises")
-public class WeightedExercise extends Exercise {
+public class WeightedExercise {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String exerciseType;
+    private String exerciseTargetArea;
     private int sets;
     private int reps;
     private double weight;
@@ -18,7 +20,8 @@ public class WeightedExercise extends Exercise {
     private Workout workout;
 
     public WeightedExercise(String exerciseType, String exerciseTargetArea, int sets, int reps, double weight, Workout workout) {
-        super(exerciseType, exerciseTargetArea);
+        this.exerciseType = exerciseType;
+        this.exerciseTargetArea = exerciseTargetArea;
         this.sets = sets;
         this.reps = reps;
         this.weight = weight;
@@ -65,6 +68,22 @@ public class WeightedExercise extends Exercise {
 
     public void setWorkout(Workout workout) {
         this.workout = workout;
+    }
+
+    public String getExerciseType() {
+        return exerciseType;
+    }
+
+    public void setExerciseType(String exerciseType) {
+        this.exerciseType = exerciseType;
+    }
+
+    public String getExerciseTargetArea() {
+        return exerciseTargetArea;
+    }
+
+    public void setExerciseTargetArea(String exerciseTargetArea) {
+        this.exerciseTargetArea = exerciseTargetArea;
     }
 }
 
