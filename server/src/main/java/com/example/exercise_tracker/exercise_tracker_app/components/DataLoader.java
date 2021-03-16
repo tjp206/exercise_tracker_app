@@ -8,6 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -32,22 +33,22 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
 
-        User Mark = new User("Mark", "Smith", LocalDate.now(), "male", "mark@gmail.com", 185);
+        User Mark = new User("Mark", "Smith", LocalDate.of(1990, Month.JANUARY, 8), "male", "mark@gmail.com", 185);
         userRepository.save(Mark);
 
-        User Stacey = new User("Stacey", "Smith", LocalDate.now(), "female", "stacey@gmail.com", 155);
+        User Stacey = new User("Stacey", "Smith", LocalDate.of(1995, 2, 12), "female", "stacey@gmail.com", 155);
         userRepository.save(Stacey);
 
-        UserWeight mark_weight = new UserWeight(92.5, LocalDate.now(), Mark);
+        UserWeight mark_weight = new UserWeight(92.5, LocalDate.of(2021, 3, 10), Mark);
         userWeightRepository.save(mark_weight);
 
-        UserWeight stacey_weight = new UserWeight(62.5, LocalDate.now(), Stacey);
+        UserWeight stacey_weight = new UserWeight(62.5, LocalDate.of(2021, 3, 13), Stacey);
         userWeightRepository.save(stacey_weight);
 
-        Workout workout1 = new Workout(LocalDate.now(), LocalTime.now(), LocalTime.now(), Mark);
+        Workout workout1 = new Workout(LocalDate.of(2021, 3, 16), LocalTime.of(12, 30), LocalTime.of(13, 35), Mark);
         workoutRepository.save(workout1);
 
-        Workout workout2 = new Workout(LocalDate.now(), LocalTime.now(), LocalTime.now(), Stacey);
+        Workout workout2 = new Workout(LocalDate.of(2021, 3, 15), LocalTime.of(10, 24), LocalTime.of(11,47), Stacey);
         workoutRepository.save(workout2);
 
         WeightedExercise we1 = new WeightedExercise("Squats", "Legs", 4, 15, 65.50, workout1);
