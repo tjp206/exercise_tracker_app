@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
+import Request from '../helpers/request';
 import './RegistrationComponent.css';
+
 
 
 function RegistrationComponent(props){
@@ -11,8 +13,7 @@ function RegistrationComponent(props){
         sex: "",
         height: "",
         email: "",
-        password: "",
-        confirmPassword: ""
+        password: ""
     })
 
     const handleChange = (e) => {
@@ -24,13 +25,50 @@ function RegistrationComponent(props){
     }
 
     const handleSubmitClick = (e) => {
-        console.log(e)
         e.preventDefault();
         if(state.password === state.confirmPassword) {
-            // sendDetailsToServer()    
+            sendDetailsToServer()   
         } else {
-            props.showError('Passwords do not match');
+            // props.showError('Passwords do not match');
         }
+    }
+
+    const sendDetailsToServer = () => {
+        if(state.email.length && state.password.length) {
+            // props.showError(null);
+            const payload={
+                "firstName":state.firstName,
+                "lastName":state.lastName,
+                "dob":state.dob,
+                "sex":state.sex,
+                "height":state.height,
+                "email":state.email,
+                // "password":state.password,
+            }
+            const request = new Request();
+            request.post('/users', payload)
+                .then(function (response) {
+                    if(response.status === 200){
+                        setState(prevState => ({
+                            ...prevState,
+                            'successMessage' : 'Registration successful. Redirecting to home page..'
+                        }))
+                        // redirectToHome();
+                        // props.showError(null)
+                        console.log("response status true");
+                    } else{
+                        // props.showError("Some error ocurred");
+                        console.log("response status false");
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });    
+        } else {
+            // props.showError('Please enter valid username and password') 
+            console.log("Please enter valid username and password");   
+        }
+        
     }
 
     return(
@@ -43,8 +81,8 @@ function RegistrationComponent(props){
                     type="text"
                     className="form-control"
                     placeholder="Bruce"
-                    required
                     onChange={handleChange}
+                    required
                 />
                 <br /><br />
 
@@ -55,8 +93,8 @@ function RegistrationComponent(props){
                     type="text"
                     className="form-control"
                     placeholder="Wayne"
-                    required
                     onChange={handleChange}
+                    required
                 />
                 <br /><br />
 
@@ -67,14 +105,14 @@ function RegistrationComponent(props){
                     type="date"
                     className="form-control"
                     placeholder="Select your date of birth"
-                    required
                     onChange={handleChange}
+                    required
                 />
                 <br /><br />
 
                 <label htmlFor="sex">Sex: </label>
-                <select id="sex" name="sex" className="form-control" onChange={handleChange}>
-                    <option value="" disabled selected>- Please select your sex -</option>
+                <select id="sex" name="sex" className="form-control" defaultValue={'DEFAULT'} onChange={handleChange}>
+                    <option value="DEFAULT" disabled>- Please select your sex -</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
@@ -113,8 +151,8 @@ function RegistrationComponent(props){
                     type="password"
                     className="form-control"
                     placeholder="Create password"
-                    required
                     onChange={handleChange}
+                    required
                 />
                 <br /><br />
 
@@ -125,8 +163,8 @@ function RegistrationComponent(props){
                     type="password"
                     className="form-control"
                     placeholder="Confirm password"
-                    required
                     onChange={handleChange}
+                    required
                 />
                 <br /><br />
 
