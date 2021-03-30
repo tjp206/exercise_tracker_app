@@ -6,6 +6,7 @@ import Preferences from './components/PreferencesComponent';
 import Login from './components/LoginComponent';
 import RegistrationComponent from './components/RegistrationComponent';
 import MainAppComponent from './components/MainAppComponent';
+import AlertComponent from './components/AlertComponent';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   // if(token){
   //   return <Login setToken={setToken} />
   // }
+  const [errorMessage, updateErrorMessage] = useState(null);
 
   return (
     <div className="App">
@@ -29,12 +31,13 @@ function App() {
             <Preferences />
           </Route>
           <Route path="/registration">
-            <RegistrationComponent/>
+            <RegistrationComponent showError={updateErrorMessage}/>
           </Route>
-          <Route path="/">
+          <Route path="/" exact={true}>
             <MainAppComponent/>
           </Route>
         </Switch>
+        <AlertComponent errorMessage={errorMessage} hideError={updateErrorMessage}/>
       </BrowserRouter>
       
     </div>

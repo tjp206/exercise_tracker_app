@@ -29,13 +29,24 @@ function RegistrationComponent(props){
         if(state.password === state.confirmPassword) {
             sendDetailsToServer()   
         } else {
-            // props.showError('Passwords do not match');
+            props.showError('Passwords do not match');
         }
     }
 
+    const validateEmail = function (emailAddress){
+        var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if(emailAddress.match(mailformat))
+            {
+            return true;
+            } else {
+                props.showError("You have entered an invalid email address!");
+            return false;
+            }
+        }
+
     const sendDetailsToServer = () => {
-        if(state.email.length && state.password.length) {
-            // props.showError(null);
+        if(validateEmail(state.email) && state.password.length) {
+            props.showError(null);
             const payload={
                 "firstName":state.firstName,
                 "lastName":state.lastName,
@@ -48,24 +59,24 @@ function RegistrationComponent(props){
             const request = new Request();
             request.post('/users', payload)
                 .then(function (response) {
-                    if(response.status === 200){
+                    if(response.status === 200 || 201){
                         setState(prevState => ({
                             ...prevState,
                             'successMessage' : 'Registration successful. Redirecting to home page..'
                         }))
                         // redirectToHome();
-                        // props.showError(null)
+                        props.showError(null)
                         console.log("response status true");
                     } else{
-                        // props.showError("Some error ocurred");
-                        console.log("response status false");
+                        props.showError("Some error ocurred");
+                        console.log(response.status);
                     }
                 })
                 .catch(function (error) {
                     console.log(error);
                 });    
         } else {
-            // props.showError('Please enter valid username and password') 
+            props.showError('Please enter valid username and password') 
             console.log("Please enter valid username and password");   
         }
         
