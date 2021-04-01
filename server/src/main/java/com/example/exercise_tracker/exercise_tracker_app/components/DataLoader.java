@@ -33,10 +33,10 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
 
-        User Mark = new User("Mark", "Smith", LocalDate.of(1990, Month.JANUARY, 8), "male", "mark@gmail.com", 185);
+        User Mark = new User("Mark", "Smith", LocalDate.of(1990, Month.JANUARY, 8), "male", "mark@gmail.com", "password123", 185);
         userRepository.save(Mark);
 
-        User Stacey = new User("Stacey", "Smith", LocalDate.of(1995, 2, 12), "female", "stacey@gmail.com", 155);
+        User Stacey = new User("Stacey", "Smith", LocalDate.of(1995, 2, 12), "female", "stacey@gmail.com", "password321", 155);
         userRepository.save(Stacey);
 
         UserWeight mark_weight = new UserWeight(92.5, LocalDate.of(2021, 3, 10), Mark);
