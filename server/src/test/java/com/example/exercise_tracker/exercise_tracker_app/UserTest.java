@@ -17,7 +17,7 @@ public class UserTest {
 
     @Before
     public void before() {
-        user = new User("TJ", "Pataria", LocalDate.of(1986, Month.OCTOBER, 1), "male", "tj@gmail.com", 183);
+        user = new User("TJ", "Pataria", LocalDate.of(1986, Month.OCTOBER, 1), "male", "tj@gmail.com", "passwordTJ", 183);
     }
 
     @Test
