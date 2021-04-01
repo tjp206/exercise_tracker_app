@@ -18,16 +18,18 @@ public class User {
     private String sex;
     private String email;
     private Integer height;
+    private String password;
     private double bmi;
     @Transient
     private Integer age;
 
-    public User(String firstName, String lastName, LocalDate dob, String sex, String email, Integer height) {
+    public User(String firstName, String lastName, LocalDate dob, String sex, String email, String password, Integer height) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
         this.sex = sex;
         this.email = email;
+        this.password = password;
         this.height = height;
     }
 
@@ -79,6 +81,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Integer getHeight() {
