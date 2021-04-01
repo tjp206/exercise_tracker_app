@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import Request from '../helpers/request';
 import './RegistrationComponent.css';
 
-
+const bcrypt = require('bcryptjs');
+const saltRounds = 10;
 
 function RegistrationComponent(props){
 
@@ -47,14 +48,14 @@ function RegistrationComponent(props){
     const sendDetailsToServer = () => {
         if(validateEmail(state.email) && state.password.length) {
             props.showError(null);
-            const payload={
-                "firstName":state.firstName,
-                "lastName":state.lastName,
-                "dob":state.dob,
-                "sex":state.sex,
-                "height":state.height,
-                "email":state.email,
-                // "password":state.password,
+            const payload = {
+                "firstName": state.firstName,
+                "lastName": state.lastName,
+                "dob": state.dob,
+                "sex": state.sex,
+                "height": state.height,
+                "email": state.email,
+                "password": bcrypt.hashSync(state.password, saltRounds),
             }
             const request = new Request();
             request.post('/users', payload)
