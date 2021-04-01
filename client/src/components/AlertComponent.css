@@ -1,0 +1,6 @@
+.alertMessage {
+    min-width: 200px;
+    min-height: 50px;
+    justify-content: space-between;
+    background-color: aqua;
+}
